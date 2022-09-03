@@ -1,0 +1,21 @@
+.wrapper {
+    padding: 25px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+
+.link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: rgb(87, 175, 176);
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.link.active {
+    background-color: brown;
+}
