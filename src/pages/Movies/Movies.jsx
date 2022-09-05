@@ -1,6 +1,6 @@
 import MoviesSearchForm from "pages/MovieSearchForm/MovieSearchForm"
 import { FilmListContainer } from "./Movies.styled"
-import { useSearchParams, useLocation } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { getMoviesByQuery } from "shared/api/movies"
 import { useEffect } from "react"
@@ -15,8 +15,7 @@ const Movies = () => {
     })
 
     const [searchParams, setSearchParams] = useSearchParams()
-    // const location = useLocation()
-    // console.log(location)
+  
     const search = searchParams.get("search")
    
 
