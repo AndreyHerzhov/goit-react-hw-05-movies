@@ -1,65 +1,6 @@
-// import { Link } from "react-router-dom"
-// import { getMoviesByQuery } from "shared/api/movies"
-// import {  useState } from "react"
-// import { nanoid } from "nanoid"
-// import { FilmListContainer } from "./Movies.styled"
-// import MoviesSearchForm from "pages/MovieSearchForm/MovieSearchForm"
-
-
-// const Movies = () => {
-//     const [search, setSearch] = useState({
-//        search: "",
-//     })
-//     const [state,setState] = useState('')
-//     const [movies, setMovies] = useState([])
-     
-
-//     const handleSearch = ({target}) => {
-//         const {name,value} = target
-//         setSearch({
-//             ...search,
-//             [name]: value
-//         })
-//     }
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault()
-//         setState(search)
-//         const fetchPosts = async() => {
-//             setSearch(prevState => ({
-//                 ...prevState,
-//                 loading: true,
-//                 error: null,
-
-//             }))
-//         try {
-//             const result = await getMoviesByQuery(search.search);
-//             setMovies(prevState => {
-//                 return  [...result.data.results ]
-//             })
-           
-//         } catch (error) {
-//             console.log(error)
-//         }
-//         finally {
-             
-//         }
-//     }
-//     fetchPosts() 
-//         setSearch({
-//             search: ""
-//         })
-         
-//     }
-   
-//     const elements = movies.map(({id,original_title }) =>
-//         <li key={nanoid()} id={id}>
-//             <Link to={`/movies/${id}`}>{original_title}</Link>
-//         </li>)
-
 import MoviesSearchForm from "pages/MovieSearchForm/MovieSearchForm"
 import { FilmListContainer } from "./Movies.styled"
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams, useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { getMoviesByQuery } from "shared/api/movies"
 import { useEffect } from "react"
@@ -74,9 +15,10 @@ const Movies = () => {
     })
 
     const [searchParams, setSearchParams] = useSearchParams()
-    
+    // const location = useLocation()
+    // console.log(location)
     const search = searchParams.get("search")
- 
+   
 
     useEffect(() => {
         const fetchPosts = async() => {
@@ -119,15 +61,12 @@ const Movies = () => {
  
     // const elements = ''
     const { items } = state
-    // if(items.length) {
+    
         const elements = items.map(({id,original_title }) =>
         <li key={nanoid()} id={id}>
-             <Link to={`/movies/${id}`}>{original_title}</Link>
+             <Link state={{from: `/movies?search=${search}`}} to={`/movies/${id}`}>{original_title}</Link>
         </li>)
-        console.log(elements)
-    //     return elements
-    // }
-    
+     
   
     return (
          

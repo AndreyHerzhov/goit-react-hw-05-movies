@@ -1,5 +1,5 @@
 import { Title } from "./Home.styled"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getMovies } from "shared/api/movies";
 import { nanoid } from "nanoid";
@@ -11,6 +11,9 @@ const Home = () => {
         loading: false,
         error: null
     })
+
+    const location = useLocation()
+    // console.log(location)
 
     useEffect(() => {
         const fetchPosts = async() => {
@@ -51,7 +54,7 @@ const Home = () => {
    
   const elements = items.map(({id,original_title }) =>
         <li key={nanoid()} id={id}>
-             <Link to={`/movies/${id}`}>{original_title}</Link>
+             <Link  state={{from: "/"}} to={`/movies/${id}`}>{original_title}</Link>
         </li>)
  
 

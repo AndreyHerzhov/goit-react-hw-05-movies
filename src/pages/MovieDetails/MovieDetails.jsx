@@ -1,6 +1,6 @@
 import { Text,Title, Container, ImgWrapper, InfoWrapper, Img, AdditioanlInfo, List } from "./MovieDetails.styled"
 import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Outlet, useLocation } from "react-router-dom"
 import { getMovieByID } from "shared/api/movies"
 import { Link } from "react-router-dom"
 import { nanoid } from "nanoid";
@@ -14,8 +14,11 @@ const MovieDetails = () => {
     })
     const {movieId} = useParams()
     const navigate = useNavigate()
+    const location = useLocation()
+    const   from   = location.state?.from || "/movies"
+    // console.log(from)
 
-    const goBack = () => navigate(-1)
+    const goBack = () => navigate(location.state.from)
    
     useEffect(() => {
         const fetchPosts = async() => {
@@ -81,10 +84,11 @@ const MovieDetails = () => {
      <AdditioanlInfo>
         <Text>Additional information</Text>
         <List>
-            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+            <Link state={{from}} to={`/movies/${movieId}/cast`}>Cast</Link>
+            <Link state={{from}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
         </List>
      </AdditioanlInfo>
+     <Outlet/>
      </> 
     )
 }

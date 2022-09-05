@@ -68,6 +68,20 @@ export const getMovies = async(_page = 1) => {
 
 export const getCreditsByID = async(id) => {
   try {
+    const response = await axios(`/movie/${id}/credits`, {
+      params: {
+        api_key: API_KEY,
+      }
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getReviewsByID = async(id) => {
+  try {
     const response = await axios(`/movie/${id}/reviews`, {
       params: {
         api_key: API_KEY,
