@@ -11,12 +11,27 @@ const instance = axios.create({
     }
 })
 
+export const getMoviesByQuery = async (q) => {
+  try {
+    const response = await axios('/search/movie', {
+      params: {
+        api_key: API_KEY,
+        query: q,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const getGenres = async () => {
     try {
       const genres = await axios('/genre/movie/list', {
         params: {
           api_key: API_KEY,
-          language: this.language,
+          
         },
       });
 
@@ -49,4 +64,18 @@ export const getMovies = async(_page = 1) => {
         }
     })
     return data;
+}
+
+export const getCreditsByID = async(id) => {
+  try {
+    const response = await axios(`/movie/${id}/reviews`, {
+      params: {
+        api_key: API_KEY,
+      }
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
 }

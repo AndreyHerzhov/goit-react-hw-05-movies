@@ -22,7 +22,7 @@ const Home = () => {
                 }))
             try {
                 const result = await getMovies();
-                console.log(result)
+                // console.log(result)
                 setState(prevState => {
                     return {
                         ...prevState,
@@ -49,9 +49,10 @@ const Home = () => {
 
   const { items, loading, error } = state
    
-  const elements = items.map(({id,original_title }) => <li key={nanoid()} id={id}>
-         <Link to={`/movies/${id}`}>{original_title}</Link>
-    </li>)
+  const elements = items.map(({id,original_title }) =>
+        <li key={nanoid()} id={id}>
+             <Link to={`/movies/${id}`}>{original_title}</Link>
+        </li>)
  
 
     return (
