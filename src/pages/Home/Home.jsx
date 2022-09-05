@@ -1,5 +1,5 @@
 import { Title } from "./Home.styled"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getMovies } from "shared/api/movies";
 import { nanoid } from "nanoid";
@@ -12,8 +12,7 @@ const Home = () => {
         error: null
     })
 
-    const location = useLocation()
-    // console.log(location)
+ 
 
     useEffect(() => {
         const fetchPosts = async() => {
