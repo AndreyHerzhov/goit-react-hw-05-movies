@@ -56,13 +56,23 @@ const Reviews = () => {
        <Text>{content}</Text>
     </li>
 ))
+
+ useEffect(() => {
+    
+ })
+
+     
     
     return ( 
        <>
-        <h2>Reviews</h2>
-        <ul>
-        {elements}
-        </ul>
+        {reviews.length > 0 && 
+        <>
+        <h2>Reviews</h2><ul>
+                    {elements}
+                </ul>
+        </>
+        }
+        {reviews.length === 0 && <><h1>No reviews</h1></>}
        </>
     )
 }

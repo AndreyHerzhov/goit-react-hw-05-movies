@@ -31,6 +31,7 @@ export const InfoWrapper = styled.div`
         height: 300px;
         background-color: orange;
         padding: 20px;
+        overflow-y: scroll;
 `
 
 export const Img = styled.img`
