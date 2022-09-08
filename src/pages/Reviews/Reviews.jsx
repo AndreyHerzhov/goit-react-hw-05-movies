@@ -57,9 +57,7 @@ const Reviews = () => {
     </li>
 ))
 
- useEffect(() => {
-    
- })
+
 
      
     
