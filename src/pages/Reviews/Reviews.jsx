@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getReviewsByID } from "shared/api/movies"
 import { Text, Title } from "./Reviews.styled"
-import { lazy, Suspense } from "react";
+import {   Suspense } from "react";
 
 const Reviews = () => {
     const [state, setState] = useState({
@@ -55,15 +55,14 @@ const Reviews = () => {
        <Title>Author: {author}</Title>
        <Text>{content}</Text>
     </li>
-))
-
-
-
-     
-    
+))  
+ 
+ 
     return ( 
        <>
        <Suspense>
+        
+     
         {reviews.length > 0 && 
         <>
         <h2>Reviews</h2><ul>
@@ -71,7 +70,7 @@ const Reviews = () => {
                 </ul>
         </>
         }
-        {reviews.length === 0 && <><h1>No reviews</h1></>}
+        {reviews && <><h1>No reviews</h1></>}  
         </Suspense>
        </>
     )
