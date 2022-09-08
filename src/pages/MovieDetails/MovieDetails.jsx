@@ -1,5 +1,5 @@
 import { Text,Title, Container, ImgWrapper, InfoWrapper, Img, AdditioanlInfo, List } from "./MovieDetails.styled"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useParams, useNavigate, Outlet, useLocation } from "react-router-dom"
 import { getMovieByID } from "shared/api/movies"
 import { Link } from "react-router-dom"
@@ -88,7 +88,9 @@ const MovieDetails = () => {
             <Link state={{from}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
         </List>
      </AdditioanlInfo>
-     <Outlet/>
+     <Suspense>
+        <Outlet/>
+     </Suspense>
      </> 
     )
 }
